@@ -1,0 +1,330 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MP.master.cs"
+    Inherits="HHRR.MP.MP" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Municipalidad de Villa Allende | Autogestion Empleados</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+
+    <link href="../App_Themes/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../App_Themes/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../App_Themes/dist/css/AdminLTE.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet" />
+    <link href="../App_Themes/dist/css/skins/_all-skins.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://vecino.villaallende.gov.ar/App_Themes/style/css/colores.css">
+    <link rel="stylesheet" href="https://vecino.villaallende.gov.ar/App_Themes/style/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-104459607-1');
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        .caja {
+            box-shadow: 3px 3px 6px 1px rgba(123, 121, 121, 0.8);
+        }
+
+        .cabecera {
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color: #ddd;
+            text-align: center;
+        }
+
+        .cuerpo {
+            padding: 15px;
+            text-align: center;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color: #ddd;
+        }
+
+        .box.box-primary {
+            border-top-color: #6f6f6e;
+        }
+
+        .btn-primary {
+            background-color: #6f6f6e !important;
+            border-color: #1c1b1f !important;
+            color: #fad613 !important;
+            font-weight: 700;
+        }
+
+        .dropdown-toggle::after {
+            display: none !important;
+        }
+
+        .st-key {
+            width: 30%;
+            text-align: left;
+            padding-right: 1%;
+            background-color: dimgrey !important;
+            color: white;
+        }
+
+        .nav > li > a:hover, .nav > li > a:active, .nav > li > a:focus {
+            color: #444;
+            background: transparent;
+        }
+
+        .btn-outline-warning {
+            color: #ffc107 !important;
+            border-color: #ffc107 !important;
+            border-width: 2px !important;
+            text-decoration: none !important;
+            padding: 10px !important;
+            font-weight: 700 !important;
+            background-color: #6f6f6e !important;
+            font-size: 16px !important;
+        }
+
+            .btn-outline-warning:hover {
+                background-color: #ffc107 !important;
+                color: #6f6f6e !important;
+                border-color: #6f6f6e !important;
+            }
+    </style>
+    <style>
+        @media (min-width: 992px) {
+            .container_mobile {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container_mobile {
+                padding: 20px !important;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .menu_vecino {
+                display: none;
+            }
+
+            .main-header-two__top-inner:before {
+                background-color: transparent !important;
+            }
+
+            .main-header-two__top-inner {
+                padding-left: 0;
+            }
+
+            .barra_menu_movile {
+                background-color: var(--roofsie-base) !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                padding-bottom: 10px;
+            }
+
+            .aside_mobile {
+                margin-top: 80px;
+            }
+
+            .aside_mobile_menu {
+                margin-top: -160px;
+            }
+
+            .main-header-two__top-inner:after {
+                border-top: none;
+            }
+
+            .container-fluid {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .image-logo-mobile {
+                margin-top: 0px !important;
+                margin-right: 0px !important;
+            }
+
+            .content_desktop {
+                margin-left: 0px;
+                padding: 0px !important;
+            }
+
+            .box_desktop {
+                padding: 15px !important;
+            }
+        }
+    </style>
+    <style>
+        div, span, strong, ul, li, a, p {
+            font-family: 'Encode Sans', sans-serif;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        /* Mostrar en PC (pantallas anchas) y ocultar en teléfonos */
+        .pc-only {
+            display: block; /* Mostrado por defecto */
+        }
+
+        .mobile-only {
+            display: none; /* Oculto por defecto */
+        }
+
+        /* Mostrar en teléfonos y ocultar en PC */
+        @media (max-width: 1024px) {
+            .pc-only {
+                display: none; /* Ocultar en teléfonos */
+            }
+
+            .mobile-only {
+                display: block; /* Mostrar en teléfonos */
+            }
+        }
+    </style>
+
+
+</head>
+<body class="skin-blue layout-top-nav"
+    style="font-family: 'Encode Sans', sans-serif;">
+    <form id="form1" runat="server">
+        <div class="wrapper" style="height: auto; min-height: 100%; background-color: white;">
+            <header class="clearfix mobile-only print" id="headerMobile" runat="server" 
+                style="text-align: center;">
+                <div class="row">
+                    <div class="col-xs-7" style="margin-top: 15px; margin-bottom: 15px; padding-left: 20px !important;">
+                        <a href="../Secure/Inicio.aspx">
+                            <img src="https://vecino.villaallende.gov.ar/img/LogoPablo.png" style="height: 40px;" />
+                        </a>
+                    </div>
+                    <div class="col-xs-5">
+                        <button class="btn dropdown-toggle btn-usuario" type="button" id="dropdownMenu2"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img style="height: 40px; width: 40px; border-radius: 50%; margin-top: 20px; right: 10px; position: fixed; top: 0.1px;"
+                                id="img1"
+                                runat="server" src="../App_Themes/dist/img/Usuario.png" class="user-image image-logo-mobile" alt="User Image" />
+                        </button>
+                        <ul class="dropdown-menu" style="padding: 20px;"
+                            aria-labelledby="dropdownMenu2">
+                            <li style="display: grid; padding: 15px 25px 0px 25px;" class="li-usuario">
+                                <strong id="liApellidoMobile" runat="server"></strong>
+                                <span id="liNombreMobile" runat="server"></span></li>
+                            <li style="display: flex; padding: 15px 25px 0px 25px" class="li-usuario">
+                                <span style="display: ruby;">CUIT: </span>
+                                <span style="display: block; margin-left: 10px;" id="mnuPcCuitMobile" runat="server"></span></li>
+                            <li style="display: flex; padding: 15px 25px 0px 25px" class="li-usuario">
+                                <span style="display: block;">CIDI: </span>
+                                <span style="display: block; margin-left: 10px;" id="mnuPcNivelCidiMobile" runat="server">Nivel 2</span></li>
+                            <li style="padding: 15px; border-top: solid 1px lightgray; margin-top: 15px;">
+                                <a class="dropdown-item" href="#" runat="server" id="A1"
+                                    onserverclick="btnCerraSession_ServerClick" style="text-align: center; border: solid 3px lightgray; border-radius: 10px; padding: 8px;">Cerrar Sesion</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container-fluid"
+                    style="background: linear-gradient(87deg, rgb(148 23 23) 0%, rgba(255,35,0,1) 41%, rgb(255 233 0) 79%);">
+                    <div class="row">
+                        <div class="col-md-12" style="padding-top: 15px;">
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <header class="clearfix pc-only print header" id="headerPC" runat="server"
+                style="text-align: left; height: 80px;">
+                <div class="row" style="padding-top: 0px; padding-bottom: 0px; height: 80px;">
+                    <div class="col-md-4" style="padding-left: 5%; height: 80px;">
+                        <a href="../Secure/ListaTramites.aspx">
+                            <img src="https://vecino.villaallende.gov.ar/img/LogoPablo.png"
+                                style="height: 50px; margin-top: 12px;" />
+                        </a>
+                    </div>
+                    <div class="col-md-4" style="height: 80px !important; align-items: center; vertical-align: middle; display: inline-flex;">
+                        <a href="../Secure/ListaTramites.aspx" style="width: 100%;">
+                            <h2 class="section-title__title"
+                                style="text-align: center; margin-top: 12px; color: #6f6f6e; font-size: 24px; line-height: 10px; text-decoration-line: overline;">
+                                <img id="imgSeccion" runat="server"
+                                    src="https://vecino.villaallende.gov.ar/App_Themes/images/vecino.png"
+                                    style="height: 50px !important; margin-top: -4px;" />
+                                <label id="lblTituloHeader" runat="server" style="text-decoration: overline;">&nbsp;Vecino Digital&nbsp;</label>
+
+                            </h2>
+                        </a>
+                    </div>
+                    <div class="col-md-4" style="padding-right: 5%; align-items: center; display: inline-grid; text-align: right; vertical-align: middle; height: 80px;">
+                        <div class="dropdown">
+                            <button class="btn-usuario" type="button"
+                                style="background-color: transparent; border: none; display: inline-flex;"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img id="imgUsuario" runat="server"
+                                    src="https://vecino.villaallende.gov.ar/img/LogoPablo.png"
+                                    class="img-thumbnail" alt="..." style="height: 50px !important; border: none; margin-right: 10px; border-radius: 50%; width: 60px; height: 60px;" />
+                                <ul style="color: gray; list-style: none; text-align: left; padding-left: 0; margin-bottom: 0px; padding-top: 10px">
+                                    <li id="liNombre" runat="server" style="font-size: 14px; font-weight: 600"></li>
+                                    <li id="liApellido" runat="server" style="font-size: 14px; font-weight: 600"></li>
+                                </ul>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li style="display: grid; padding: 15px 25px 0px 25px" class="li-usuario">
+                                    <strong id="mnuPcApellido" runat="server">Velez Spitale</strong>
+                                    <span id="mnuPcNombre" runat="server">Ignacio Martin</span></li>
+                                <li style="display: flex; padding: 15px 25px 0px 25px" class="li-usuario">
+                                    <span style="display: ruby;">CUIT: </span>
+                                    <span style="display: block; margin-left: 10px;"
+                                        id="mnuPcCuit" runat="server">23-27.173.499-9</span></li>
+                                <li style="display: flex; padding: 15px 25px 0px 25px" class="li-usuario">
+                                    <span style="display: block;">CIDI: </span>
+                                    <span style="display: block; margin-left: 10px;" id="mnuPcNivelCidi"
+                                        runat="server">Nivel 2</span></li>
+                                <li style="padding: 15px; border-top: solid 1px lightgray; margin-top: 15px;">
+                                    <a class="dropdown-item" href="#" runat="server" id="btnCerraSession"
+                                        onserverclick="btnCerraSession_ServerClick" style="text-align: center; border: solid 3px lightgray; border-radius: 10px; padding: 8px;">Cerrar Sesion</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid"
+                    style="height: 10px; position: relative; background: linear-gradient(87deg, rgb(148 23 23) 0%, rgba(255,35,0,1) 41%, rgb(255 233 0) 79%);">
+                    <div class="row">
+                        <div class="col-md-12" style="padding-top: 15px;">
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Full Width Column -->
+            <div class="content-wrapper" style="min-height: 386px; background-color: white">
+                <div class="container-fluid">
+                    <!-- Main content -->
+                    <section class="content">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+
+                    </section>
+                    <!-- /.content -->
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    <b>Version</b> 1.0
+       
+                </div>
+                <strong>Copyright &copy; 2017 <a href="#">Municipalidad de Villa Allende</a>.</strong> Todos los derechos reservados.
+            </footer>
+        </div>
+
+
+        <script src="../App_Themes/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+        <script src="../App_Themes/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../App_Themes/dist/js/app.min.js"></script>
+
+    </form>
+</body>
+</html>
